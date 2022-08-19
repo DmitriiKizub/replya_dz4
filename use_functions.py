@@ -34,19 +34,32 @@
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
 
+sum_end = 0
+history_chek = {}
 while True:
     print('1. пополнение счета')
     print('2. покупка')
     print('3. история покупок')
     print('4. выход')
 
-    choice = input('Выберите пункт меню')
+
+    choice = input('Выберите пункт меню: ')
     if choice == '1':
-        pass
+        sum = int(input("Введите сумму пополнения: "))
+        sum_end = sum_end + sum
+        #print(sum_end)
     elif choice == '2':
-        pass
+        sum_chek = int(input("Введите сумму покупки: "))
+        if sum_chek >= sum_end:
+            print('Не достаточно средств')
+        else:
+            name_chek = str(input('Введите название покупки: '))
+            sum_end = sum_end - sum_chek
+            history_chek.update([(name_chek,sum_end)])
+
     elif choice == '3':
-        pass
+        for k,y in history_chek.items():
+            print(k,y)
     elif choice == '4':
         break
     else:
